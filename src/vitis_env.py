@@ -1,3 +1,4 @@
+from tcl_read import Tcl
 import xml.etree.ElementTree
 import stable_baselines3
 import gym
@@ -8,38 +9,10 @@ from directives import Directive, OpenDirective, SetDirective, ExecuteDirective,
 class VitisEnv(gym.Env):
     def __init__(self, directives_file: str) -> None:
         self.dir_file = open(directives_file)
-        self.directives = []
-        dirs = []
+        self.tcl = Tcl()
         for directive in self.dir_file:
-            dirs.append(directive)
-        self.eval_directives(dirs)
-        pass
-
-    def eval_directives(self, dirs):
-        for dir in dirs:
-            print(dir)
-            split = dir.split()
-            first = split[0]
-            rest = split[1:]
-            if first == "open_project":
-                opendir_obj = dir.split()[1]
-                self.directives.append(
-                    directive("open", "project", opendir_obj))
-            elif first == "open_solution":
-                opendir_obj = dir.split()[1]
-                self.directives.append(
-                    directive("open", "solution", opendir_obj))
-            elif first == "set_directive_top":
-                setting = ""
-                setting.join(rest)
-                self.directives.append(directive("set", "top", setting))
-            elif first == "set_directive_pipeline":
-                setting = ""
-                setting.join(rest)
-                self.directives.append(directive("set", "pipeline", setting))
-            if rest == []:
-                self.directives.append(directive("execute", first))
-        print(self.directives)
+            self.tcl.add_directive(directive)            
+        self.tcl.prnt()
 
     def step(self, action):
         pass
