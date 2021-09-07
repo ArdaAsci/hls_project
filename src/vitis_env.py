@@ -2,11 +2,10 @@ import xml.etree.ElementTree
 import stable_baselines3
 import gym
 from gym import spaces
-from directive import Directive, OpenDirective, SetDirective, ExecuteDirective
+from directives import Directive, OpenDirective, SetDirective, ExecuteDirective, directive
 
 
 class VitisEnv(gym.Env):
-
     def __init__(self, directives_file: str) -> None:
         self.dir_file = open(directives_file)
         self.directives = []
@@ -24,20 +23,22 @@ class VitisEnv(gym.Env):
             rest = split[1:]
             if first == "open_project":
                 opendir_obj = dir.split()[1]
-                self.directives.append(OpenDirective("project", opendir_obj))
+                self.directives.append(
+                    directive("open", "project", opendir_obj))
             elif first == "open_solution":
                 opendir_obj = dir.split()[1]
-                self.directives.append(OpenDirective("solution", opendir_obj))
+                self.directives.append(
+                    directive("open", "solution", opendir_obj))
             elif first == "set_directive_top":
                 setting = ""
                 setting.join(rest)
-                self.directives.append(SetDirective("top", setting))
+                self.directives.append(directive("set", "top", setting))
             elif first == "set_directive_pipeline":
                 setting = ""
                 setting.join(rest)
-                self.directives.append(SetDirective("pipeline", setting))
+                self.directives.append(directive("set", "pipeline", setting))
             if rest == []:
-                self.directives.append(ExecuteDirective(first))
+                self.directives.append(directive("execute", first))
         print(self.directives)
 
     def step(self, action):
@@ -47,6 +48,5 @@ class VitisEnv(gym.Env):
         pass
 
 
-
-if __name__ == "__main__":
-    env = VitisEnv("./directives.tcl")
+env = VitisEnv("./directives.tcl")
+print("what")

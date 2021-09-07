@@ -26,3 +26,15 @@ class SetDirective(Directive):
 class ExecuteDirective(Directive):
     exe_type: str
     pass
+
+def directive(*args):
+    first = args[0]
+    rest = args[1:]
+    if first == "open":
+        return OpenDirective(*rest)
+    elif first == "set":
+        return SetDirective(*rest)
+    elif first == "execute":
+        return ExecuteDirective(*rest)
+    else:
+        return
