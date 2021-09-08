@@ -3,16 +3,12 @@ import xml.etree.ElementTree
 import stable_baselines3
 import gym
 from gym import spaces
-from directives import Directive, OpenDirective, SetDirective, ExecuteDirective, directive
+from directives import Directive
 
 
 class VitisEnv(gym.Env):
-    def __init__(self, directives_file: str) -> None:
-        self.dir_file = open(directives_file)
-        self.tcl = Tcl()
-        for directive in self.dir_file:
-            self.tcl.add_directive(directive)            
-        self.tcl.prnt()
+    def __init__(self, directive_file: str) -> None:
+        self.tcl = Tcl(directive_file, read_only=False)
 
     def step(self, action):
         pass
@@ -20,6 +16,9 @@ class VitisEnv(gym.Env):
     def reset(self):
         pass
 
+    def render(self, mode):
+        pass
+
 
 env = VitisEnv("./directives.tcl")
-print("what")
+print(env.tcl.loop_count)
