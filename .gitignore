@@ -131,3 +131,5 @@ dmypy.json
 /*
 !src/
 !notebooks/
+!directives.tcl
+!matrixmul_Pipeline_Row_Col_Product_csynth.xml
