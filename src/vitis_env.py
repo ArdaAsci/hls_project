@@ -1,4 +1,4 @@
-from tcl_read import Tcl
+from tcl import Tcl
 import xml.etree.ElementTree
 import stable_baselines3
 import gym
