@@ -30,50 +30,54 @@ class BasicDirective(Directive):
 
 
 @dataclass
-class LoopDirective(Directive, ABC):
-    loop_name: str
-
-
-@dataclass
 class ArrayDirective(Directive, ABC):
     array_name: str
 
 
 @dataclass
+class LoopDirective(Directive, ABC):
+    loop_name: str
+    param: int
+
+    @param.setter
+    def param(self, val):
+        if self.check_set_validity():
+            param = val
+
+    @abstractmethod
+    def check_set_validity(self, val):
+        pass
+
+
+@dataclass
 class PipelineDirective(LoopDirective):
-    ii: int
     others: List[str]
 
     def __init__(self, loop_name: str, ii: int, others: str = ""):
         assert ii >= 1, f"Pipeline ii ({ii}) must be >=1"
-        super().__init__(loop_name=loop_name)
-        self.ii = ii
+        super().__init__(loop_name=loop_name, param=ii)
         self.others = others
 
-    def set_ii(self, ii):
-        assert ii >= 1, f"Pipeline ii ({ii}) must be >=1"
-        self.ii = ii
+    def check_set_validity(self, val):
+        return val >= 1
 
     def print(self) -> str:
         return "set_directive_pipeline -ii " + str(
-            self.ii) + " " + self.loop_name + " " + " ".join(self.others)
+            self.param) + " " + self.loop_name + " " + " ".join(self.others)
 
 
 @dataclass
 class UnrollDirective(LoopDirective):
-    factor: int
     others: List[str]
 
     def __init__(self, loop_name: str, factor: int, others: str = ""):
         assert factor >= 0, f"Unrolling factor ({factor}) must be >=0"
-        super().__init__(loop_name=loop_name)
-        self.factor = factor
+        super().__init__(loop_name=loop_name, param=factor)
         self.others = others
 
-    def set_factor(self, factor):
-        assert factor >= 0, f"Unrolling factor ({factor}) must be >=0"
-        self.factor = factor
+    def check_set_validity(self, val):
+        return val >= 0
 
     def print(self) -> str:
         return "set_directive_unroll -factor " + str(
-            self.factor) + " " + self.loop_name + " " + " ".join(self.others)
+            self.param) + " " + self.loop_name + " " + " ".join(self.others)
