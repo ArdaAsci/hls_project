@@ -1,0 +1,17 @@
+from loops import Loop
+
+
+row = Loop(name="row", iteration_count=7, parent_loop=None,)
+col = Loop(name="col", iteration_count=7, parent_loop=row)
+product = Loop(name="product", iteration_count=7, parent_loop=col)
+row.add_child(col)
+col.add_child(product)
+row1 = Loop(name="row1", iteration_count=7, parent_loop=None)
+col1 = Loop(name="col1", iteration_count=7, parent_loop=row1)
+row1.add_child(col1)
+matrixmul_project_loops = [row, col, product, row1, col1]
+
+for row_child in row.child_loops:
+    print(row_child.name)
+
+print(row.rank, col.rank, product.rank)
