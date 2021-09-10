@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 from src.hls_env import HlsEnv
-=======
->>>>>>> 1195a7dc770d2ea8e2651da3b619c20e358ef687
 from loops import Loop
 
 
@@ -15,7 +12,6 @@ col1 = Loop(name="col1", iteration_count=7, parent_loop=row1)
 row1.add_child(col1)
 matrixmul_project_loops = [row, col, product, row1, col1]
 
-<<<<<<< HEAD
 
 env = HlsEnv(project_dir="D:/vivado/vitis_rl/",
              project_name="matrixmul_prj",
@@ -23,9 +19,3 @@ env = HlsEnv(project_dir="D:/vivado/vitis_rl/",
              top_name="matrixmul",
              initial_directive_file="./directives.tcl",
              loop_list=matrixmul_project_loops)
-=======
-for row_child in row.child_loops:
-    print(row_child.name)
-
-print(row.rank, col.rank, product.rank)
->>>>>>> 1195a7dc770d2ea8e2651da3b619c20e358ef687
