@@ -46,6 +46,10 @@ class CsynthModule:
 
 
 class Csynth:
+    """
+    For handling all reading operations concerning the csynth.xml file
+    
+    """
     def __init__(self, file_name: str) -> None:
         self.csynth_file_name = file_name
         self.modules: List[CsynthModule]

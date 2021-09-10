@@ -25,7 +25,7 @@ class HlsEnv(gym.Env):
         self.observation_space = spaces.Dict({
             "rank":
             spaces.Box(low=1, high=100, shape=(1, )),
-            "#loops":
+            "total_loops":
             spaces.Box(low=1, high=100, shape=(1, )),
             "curr_nested_number":
             spaces.Box(low=1, high=100, shape=(1, )),
