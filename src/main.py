@@ -12,7 +12,6 @@ col1 = Loop(name="col1", iteration_count=7, parent_loop=row1)
 row1.add_child(col1)
 matrixmul_project_loops = [row, col, product, row1, col1]
 
-
 env = HlsEnv(project_dir="D:/vivado/vitis_rl/",
              project_name="matrixmul_prj",
              solution_name="solution1",
