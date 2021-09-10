@@ -1,5 +1,5 @@
 from typing import List
-from src.loops import Loop
+from loops import Loop
 from csynth import Csynth
 from tcl_reader import Tcl
 import stable_baselines3

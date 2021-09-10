@@ -1,4 +1,4 @@
-from src.hls_env import HlsEnv
+from hls_env import HlsEnv
 from loops import Loop
 
 
