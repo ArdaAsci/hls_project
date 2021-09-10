@@ -5,6 +5,7 @@ from directives import BasicDirective, Directive, LoopDirective, PipelineDirecti
 class Tcl():
     def __init__(self,
                  initial_directives: str,
+                 top_name: str,
                  read_only=False,
                  dirfile_name="./new_directives.tcl") -> None:
         """
@@ -17,16 +18,33 @@ class Tcl():
         """
         self.directives: List[Directive] = []
         self.read_only = read_only
+        self.top_name = top_name
         initial_dirfile = open(initial_directives)
         for directive_line in initial_dirfile:
             self.add_directive(directive_line)
         if read_only:
             initial_dirfile.close()
-            self.dirfile = open(dirfile_name)
+            self.dirfile = open(dirfile_name, "w")
             self.dirfile_name = dirfile_name
         else:
             self.dirfile = initial_dirfile
             self.dirfile_name = initial_directives
+
+    def set_loop_parameter(self, loop_name: str, directive_type: str,
+                           val: int):
+        directive_class = LoopDirective
+        if directive_type == "unroll":
+            directive_class = UnrollDirective
+        elif directive_type == "pipeline":
+            directive_class = PipelineDirective
+        for directive in self.directives:
+            if not isinstance(directive, directive_class):
+                continue
+            if directive.loop_name != '"' + self.top_name + "/" + loop_name + '"':
+                continue
+            # found the directive we're looking for
+            directive.param = val
+            return
 
     def add_directive(self, lines: Union[str, List[str]]):
         if lines is not list:
@@ -66,6 +84,10 @@ class Tcl():
                 loopnames.append(directive.loop_name)
         return len(set(loopnames))
 
+    @property
+    def loop_names(self) -> List[str]:
+        pass
+
     def __str__(self) -> str:
         return str(self.directives)
 
@@ -75,13 +97,13 @@ class Tcl():
             file_str += directive.print() + "\n"
         return file_str
 
-    def write_to_file(self, append = False):
+    def write_to_file(self, append=False):
         text = self.file_str()
         if not self.dirfile.writable:
             return False
         if append:
             self.dirfile.write(text)
         else:
-            open(self.dirfile_name, "w").close() # Flush the file
+            open(self.dirfile_name, "w").close()  # Flush the file
             self.dirfile.write(text)
         return True
