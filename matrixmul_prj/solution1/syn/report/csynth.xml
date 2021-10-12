@@ -1,0 +1,791 @@
+<profile>
+    <ReportVersion>
+        <Version>2021.1</Version>
+    </ReportVersion>
+    <UserAssignments>
+        <unit>ns</unit>
+        <ProductFamily>kintexu</ProductFamily>
+        <Part>xcku035-sfva784-1-i</Part>
+        <TopModelName>matrixmul</TopModelName>
+        <TargetClockPeriod>13.33</TargetClockPeriod>
+        <ClockUncertainty>3.60</ClockUncertainty>
+        <FlowTarget>vivado</FlowTarget>
+    </UserAssignments>
+    <PerformanceEstimates>
+        <PipelineType>no</PipelineType>
+        <SummaryOfTimingAnalysis>
+            <unit>ns</unit>
+            <EstimatedClockPeriod>5.865</EstimatedClockPeriod>
+        </SummaryOfTimingAnalysis>
+        <SummaryOfOverallLatency>
+            <unit>clock cycles</unit>
+            <Best-caseLatency>43</Best-caseLatency>
+            <Average-caseLatency>43</Average-caseLatency>
+            <Worst-caseLatency>43</Worst-caseLatency>
+            <Best-caseRealTimeLatency>0.573 us</Best-caseRealTimeLatency>
+            <Average-caseRealTimeLatency>0.573 us</Average-caseRealTimeLatency>
+            <Worst-caseRealTimeLatency>0.573 us</Worst-caseRealTimeLatency>
+            <Interval-min>44</Interval-min>
+            <Interval-max>44</Interval-max>
+        </SummaryOfOverallLatency>
+    </PerformanceEstimates>
+    <AreaEstimates>
+        <Resources>
+            <DSP>2</DSP>
+            <FF>61</FF>
+            <LUT>499</LUT>
+            <BRAM_18K>0</BRAM_18K>
+            <URAM>0</URAM>
+        </Resources>
+        <AvailableResources>
+            <BRAM_18K>1080</BRAM_18K>
+            <DSP>1700</DSP>
+            <FF>406256</FF>
+            <LUT>203128</LUT>
+            <URAM>0</URAM>
+        </AvailableResources>
+    </AreaEstimates>
+    <InterfaceSummary>
+        <RtlPorts>
+            <name>ap_clk</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_rst</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_start</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_done</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_idle</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_ready</name>
+            <Object>matrixmul</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>a_address0</name>
+            <Object>a</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>a_ce0</name>
+            <Object>a</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>a_q0</name>
+            <Object>a</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>8</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>b_address0</name>
+            <Object>b</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>b_ce0</name>
+            <Object>b</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>b_q0</name>
+            <Object>b</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>8</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res_address0</name>
+            <Object>res</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res_ce0</name>
+            <Object>res</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res_we0</name>
+            <Object>res</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res_d0</name>
+            <Object>res</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res_q0</name>
+            <Object>res</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_address0</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_ce0</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_we0</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_d0</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_address1</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_ce1</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>res1_q1</name>
+            <Object>res1</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+    </InterfaceSummary>
+    <RTLDesignHierarchy>
+        <TopModule MAX_DEPTH="3">
+            <ModuleName>matrixmul</ModuleName>
+            <InstancesList>
+                <Instance>
+                    <InstName>grp_matrixmul_Pipeline_Row_Col_Product_fu_28</InstName>
+                    <ModuleName>matrixmul_Pipeline_Row_Col_Product</ModuleName>
+                    <IsCompInst>true</IsCompInst>
+                    <ID>28</ID>
+                    <BindInstances>add_ln57_1_fu_160_p2 add_ln57_fu_178_p2 sub_ln63_fu_218_p2 add_ln59_fu_242_p2 add_ln60_fu_274_p2 add_ln63_1_fu_284_p2 sub_ln63_1_fu_303_p2 add_ln63_2_fu_309_p2 mac_muladd_8s_8s_16ns_16_1_1_U1 mac_muladd_8s_8s_16ns_16_1_1_U1 add_ln62_fu_320_p2 add_ln59_1_fu_335_p2</BindInstances>
+                </Instance>
+                <Instance>
+                    <InstName>grp_matrixmul_Pipeline_Row1_Col2_fu_38</InstName>
+                    <ModuleName>matrixmul_Pipeline_Row1_Col2</ModuleName>
+                    <IsCompInst>true</IsCompInst>
+                    <ID>38</ID>
+                    <BindInstances>add_ln69_1_fu_112_p2 add_ln69_fu_124_p2 sub_ln72_fu_164_p2 add_ln72_1_fu_174_p2 mac_muladd_16s_16s_16ns_16_1_1_U6 mac_muladd_16s_16s_16ns_16_1_1_U6 add_ln71_fu_186_p2</BindInstances>
+                </Instance>
+            </InstancesList>
+        </TopModule>
+    </RTLDesignHierarchy>
+    <ModuleInformation>
+        <Module>
+            <Name>matrixmul_Pipeline_Row_Col_Product</Name>
+            <Loops>
+                <Row_Col_Product/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>13.33</TargetClockPeriod>
+                    <ClockUncertainty>3.60</ClockUncertainty>
+                    <EstimatedClockPeriod>5.865</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>29</Best-caseLatency>
+                    <Average-caseLatency>29</Average-caseLatency>
+                    <Worst-caseLatency>29</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0.387 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0.387 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.387 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>29</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <Row_Col_Product>
+                        <Name>Row_Col_Product</Name>
+                        <TripCount>27</TripCount>
+                        <Latency>27</Latency>
+                        <AbsoluteTimeLatency>0.360 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>2</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                    </Row_Col_Product>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>1</DSP>
+                    <AVAIL_DSP>1700</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>40</FF>
+                    <AVAIL_FF>406256</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>297</LUT>
+                    <AVAIL_LUT>203128</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>1080</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln57_1_fu_160_p2" SOURCE="matrixmul.cpp:57" URAM="0" VARIABLE="add_ln57_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln57_fu_178_p2" SOURCE="matrixmul.cpp:57" URAM="0" VARIABLE="add_ln57"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="sub" PRAGMA="" RTLNAME="sub_ln63_fu_218_p2" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="sub_ln63"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln59_fu_242_p2" SOURCE="matrixmul.cpp:59" URAM="0" VARIABLE="add_ln59"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln60_fu_274_p2" SOURCE="matrixmul.cpp:60" URAM="0" VARIABLE="add_ln60"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln63_1_fu_284_p2" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="add_ln63_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="tadder" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="sub_ln63_1_fu_303_p2" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="sub_ln63_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="tadder" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln63_2_fu_309_p2" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="add_ln63_2"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8s_8s_16ns_16_1_1_U1" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="mul_ln63"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8s_8s_16ns_16_1_1_U1" SOURCE="matrixmul.cpp:63" URAM="0" VARIABLE="add_ln63"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln62_fu_320_p2" SOURCE="matrixmul.cpp:62" URAM="0" VARIABLE="add_ln62"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row_Col_Product" OPTYPE="add" PRAGMA="" RTLNAME="add_ln59_1_fu_335_p2" SOURCE="matrixmul.cpp:59" URAM="0" VARIABLE="add_ln59_1"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>matrixmul_Pipeline_Row1_Col2</Name>
+            <Loops>
+                <Row1_Col2/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>13.33</TargetClockPeriod>
+                    <ClockUncertainty>3.60</ClockUncertainty>
+                    <EstimatedClockPeriod>5.865</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>11</Best-caseLatency>
+                    <Average-caseLatency>11</Average-caseLatency>
+                    <Worst-caseLatency>11</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0.147 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0.147 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.147 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>11</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <Row1_Col2>
+                        <Name>Row1_Col2</Name>
+                        <TripCount>9</TripCount>
+                        <Latency>9</Latency>
+                        <AbsoluteTimeLatency>0.120 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>2</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                    </Row1_Col2>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>1</DSP>
+                    <AVAIL_DSP>1700</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>15</FF>
+                    <AVAIL_FF>406256</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>139</LUT>
+                    <AVAIL_LUT>203128</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>1080</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln69_1_fu_112_p2" SOURCE="matrixmul.cpp:69" URAM="0" VARIABLE="add_ln69_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln69_fu_124_p2" SOURCE="matrixmul.cpp:69" URAM="0" VARIABLE="add_ln69"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="tadder" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="sub_ln72_fu_164_p2" SOURCE="matrixmul.cpp:72" URAM="0" VARIABLE="sub_ln72"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="tadder" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln72_1_fu_174_p2" SOURCE="matrixmul.cpp:72" URAM="0" VARIABLE="add_ln72_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp" LATENCY="0" LOOP="Row1_Col2" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_16s_16ns_16_1_1_U6" SOURCE="matrixmul.cpp:72" URAM="0" VARIABLE="mul_ln72"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_16s_16ns_16_1_1_U6" SOURCE="matrixmul.cpp:72" URAM="0" VARIABLE="add_ln72"/>
+                <BindNode BINDTYPE="op" BRAM="0" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="Row1_Col2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln71_fu_186_p2" SOURCE="matrixmul.cpp:71" URAM="0" VARIABLE="add_ln71"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>matrixmul</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>13.33</TargetClockPeriod>
+                    <ClockUncertainty>3.60</ClockUncertainty>
+                    <EstimatedClockPeriod>5.865</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>43</Best-caseLatency>
+                    <Average-caseLatency>43</Average-caseLatency>
+                    <Worst-caseLatency>43</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0.573 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0.573 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.573 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>44</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>2</DSP>
+                    <AVAIL_DSP>1700</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>61</FF>
+                    <AVAIL_FF>406256</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>499</LUT>
+                    <AVAIL_LUT>203128</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>1080</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+        </Module>
+    </ModuleInformation>
+    <FIFOInformation/>
+    <UserConfigCommands>
+        <config_export vivado_optimization_level="2" vivado_phys_opt="place"/>
+        <config_schedule enable_dsp_full_reg="0"/>
+    </UserConfigCommands>
+    <Args>
+        <Arg ArgName="a" index="0" direction="in" srcType="char*" srcSize="8">
+            <hwRefs>
+                <hwRef type="port" interface="a_address0" name="a_address0" usage="address" direction="out"/>
+                <hwRef type="port" interface="a_ce0" name="a_ce0" usage="control" direction="out"/>
+                <hwRef type="port" interface="a_q0" name="a_q0" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="b" index="1" direction="in" srcType="char*" srcSize="8">
+            <hwRefs>
+                <hwRef type="port" interface="b_address0" name="b_address0" usage="address" direction="out"/>
+                <hwRef type="port" interface="b_ce0" name="b_ce0" usage="control" direction="out"/>
+                <hwRef type="port" interface="b_q0" name="b_q0" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="res" index="2" direction="inout" srcType="short*" srcSize="16">
+            <hwRefs>
+                <hwRef type="port" interface="res_address0" name="res_address0" usage="address" direction="out"/>
+                <hwRef type="port" interface="res_ce0" name="res_ce0" usage="control" direction="out"/>
+                <hwRef type="port" interface="res_we0" name="res_we0" usage="control" direction="out"/>
+                <hwRef type="port" interface="res_d0" name="res_d0" usage="data" direction="out"/>
+                <hwRef type="port" interface="res_q0" name="res_q0" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="res1" index="3" direction="inout" srcType="short*" srcSize="16">
+            <hwRefs>
+                <hwRef type="port" interface="res1_address0" name="res1_address0" usage="address" direction="out"/>
+                <hwRef type="port" interface="res1_ce0" name="res1_ce0" usage="control" direction="out"/>
+                <hwRef type="port" interface="res1_we0" name="res1_we0" usage="control" direction="out"/>
+                <hwRef type="port" interface="res1_d0" name="res1_d0" usage="data" direction="out"/>
+                <hwRef type="port" interface="res1_address1" name="res1_address1" usage="address" direction="out"/>
+                <hwRef type="port" interface="res1_ce1" name="res1_ce1" usage="control" direction="out"/>
+                <hwRef type="port" interface="res1_q1" name="res1_q1" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+    </Args>
+    <Interfaces>
+        <Interface InterfaceName="ap_clk" type="clock" busTypeName="clock" mode="slave">
+            <busParams>
+                <busParam busParamName="ASSOCIATED_RESET">ap_rst</busParam>
+            </busParams>
+            <portMaps>
+                <portMap portMapName="ap_clk">CLK</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_clk</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="ap_rst" type="reset" busTypeName="reset" mode="slave">
+            <busParams>
+                <busParam busParamName="POLARITY">ACTIVE_HIGH</busParam>
+            </busParams>
+            <portMaps>
+                <portMap portMapName="ap_rst">RST</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_rst</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="ap_ctrl" type="ap_ctrl" busTypeName="acc_handshake" mode="slave">
+            <portMaps>
+                <portMap portMapName="ap_start">start</portMap>
+                <portMap portMapName="ap_done">done</portMap>
+                <portMap portMapName="ap_idle">idle</portMap>
+                <portMap portMapName="ap_ready">ready</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_done</port>
+                <port>ap_idle</port>
+                <port>ap_ready</port>
+                <port>ap_start</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="a_address0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="a_address0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>a_address0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="a"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="a_q0" type="data" busTypeName="data" protocol="ap_memory" mode="slave" dataWidth="8">
+            <portMaps>
+                <portMap portMapName="a_q0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>a_q0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="a"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="b_address0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="b_address0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>b_address0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="b"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="b_q0" type="data" busTypeName="data" protocol="ap_memory" mode="slave" dataWidth="8">
+            <portMaps>
+                <portMap portMapName="b_q0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>b_q0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="b"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res_address0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="res_address0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res_address0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res_d0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="res_d0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res_d0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res_q0" type="data" busTypeName="data" protocol="ap_memory" mode="slave" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="res_q0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res_q0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res1_address0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="res1_address0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res1_address0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res1"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res1_d0" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="res1_d0">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res1_d0</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res1"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res1_address1" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="res1_address1">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res1_address1</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res1"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="res1_q1" type="data" busTypeName="data" protocol="ap_memory" mode="slave" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="res1_q1">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>res1_q1</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="res1"/>
+            </constraints>
+        </Interface>
+    </Interfaces>
+    <ReportHWInterface>
+        <section name="HW Interfaces" level="0">
+            <item name="AP_MEMORY">
+                <table isCollapsed="0">
+                    <keys size="2">Interface, Bitwidth</keys>
+                    <column name="a_address0">4</column>
+                    <column name="a_q0">8</column>
+                    <column name="b_address0">4</column>
+                    <column name="b_q0">8</column>
+                    <column name="res1_address0">4</column>
+                    <column name="res1_address1">4</column>
+                    <column name="res1_d0">16</column>
+                    <column name="res1_q1">16</column>
+                    <column name="res_address0">4</column>
+                    <column name="res_d0">16</column>
+                    <column name="res_q0">16</column>
+                </table>
+            </item>
+            <item name="TOP LEVEL CONTROL">
+                <table isCollapsed="0">
+                    <keys size="3">Interface, Type, Ports</keys>
+                    <column name="ap_clk">clock, ap_clk</column>
+                    <column name="ap_rst">reset, ap_rst</column>
+                    <column name="ap_ctrl">ap_ctrl_hs, ap_done ap_idle ap_ready ap_start</column>
+                </table>
+            </item>
+        </section>
+    </ReportHWInterface>
+    <ReportSWInterface>
+        <section name="SW I/O Information" level="0">
+            <item name="Top Function Arguments">
+                <table isCollapsed="1">
+                    <keys size="3">Argument, Direction, Datatype</keys>
+                    <column name="a">in, char*</column>
+                    <column name="b">in, char*</column>
+                    <column name="res">inout, short*</column>
+                    <column name="res1">inout, short*</column>
+                </table>
+            </item>
+            <item name="SW-to-HW Mapping">
+                <table isCollapsed="1">
+                    <keys size="4">Argument, HW Name, HW Type, HW Usage</keys>
+                    <column name="a">a_address0, port, offset</column>
+                    <column name="a">a_ce0, port, </column>
+                    <column name="a">a_q0, port, </column>
+                    <column name="b">b_address0, port, offset</column>
+                    <column name="b">b_ce0, port, </column>
+                    <column name="b">b_q0, port, </column>
+                    <column name="res">res_address0, port, offset</column>
+                    <column name="res">res_ce0, port, </column>
+                    <column name="res">res_we0, port, </column>
+                    <column name="res">res_d0, port, </column>
+                    <column name="res">res_q0, port, </column>
+                    <column name="res1">res1_address0, port, offset</column>
+                    <column name="res1">res1_ce0, port, </column>
+                    <column name="res1">res1_we0, port, </column>
+                    <column name="res1">res1_d0, port, </column>
+                    <column name="res1">res1_address1, port, offset</column>
+                    <column name="res1">res1_ce1, port, </column>
+                    <column name="res1">res1_q1, port, </column>
+                </table>
+            </item>
+        </section>
+    </ReportSWInterface>
+    <ReportBurst>
+        <section name="M_AXI Burst Information" level="0"/>
+    </ReportBurst>
+</profile>
+

@@ -1,0 +1,101 @@
+
+
+================================================================
+== Synthesis Summary Report of 'matrixmul'
+================================================================
++ General Information: 
+    * Date:           Thu Sep  2 13:46:03 2021
+    * Version:        2021.1 (Build 3247384 on Thu Jun 10 19:36:07 MDT 2021)
+    * Project:        matrixmul_prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: kintexu
+    * Target device:  xcku035-sfva784-1-i
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+----------+-----------+-----+
+    |                     Modules                     | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |         |          |           |     |
+    |                     & Loops                     | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |    FF    |    LUT    | URAM|
+    +-------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+----------+-----------+-----+
+    |+ matrixmul                                      |     -|  3.87|       43|  573.319|         -|       44|     -|        no|     -|  2 (~0%)|  61 (~0%)|  499 (~0%)|    -|
+    | + grp_matrixmul_Pipeline_Row_Col_Product_fu_28  |     -|  3.87|       29|  386.657|         -|       29|     -|        no|     -|  1 (~0%)|  40 (~0%)|  297 (~0%)|    -|
+    |  o Row_Col_Product                              |     -|  9.73|       27|  359.991|         2|        1|    27|       yes|     -|        -|         -|          -|    -|
+    | + grp_matrixmul_Pipeline_Row1_Col2_fu_38        |     -|  3.87|       11|  146.663|         -|       11|     -|        no|     -|  1 (~0%)|  15 (~0%)|  139 (~0%)|    -|
+    |  o Row1_Col2                                    |     -|  9.73|        9|  119.997|         2|        1|     9|       yes|     -|        -|         -|          -|    -|
+    +-------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++---------------+----------+
+| Interface     | Bitwidth |
++---------------+----------+
+| a_address0    | 4        |
+| a_q0          | 8        |
+| b_address0    | 4        |
+| b_q0          | 8        |
+| res1_address0 | 4        |
+| res1_address1 | 4        |
+| res1_d0       | 16       |
+| res1_q1       | 16       |
+| res_address0  | 4        |
+| res_d0        | 16       |
+| res_q0        | 16       |
++---------------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| a        | in        | char*    |
+| b        | in        | char*    |
+| res      | inout     | short*   |
+| res1     | inout     | short*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+---------------+---------+----------+
+| Argument | HW Name       | HW Type | HW Usage |
++----------+---------------+---------+----------+
+| a        | a_address0    | port    | offset   |
+| a        | a_ce0         | port    |          |
+| a        | a_q0          | port    |          |
+| b        | b_address0    | port    | offset   |
+| b        | b_ce0         | port    |          |
+| b        | b_q0          | port    |          |
+| res      | res_address0  | port    | offset   |
+| res      | res_ce0       | port    |          |
+| res      | res_we0       | port    |          |
+| res      | res_d0        | port    |          |
+| res      | res_q0        | port    |          |
+| res1     | res1_address0 | port    | offset   |
+| res1     | res1_ce0      | port    |          |
+| res1     | res1_we0      | port    |          |
+| res1     | res1_d0       | port    |          |
+| res1     | res1_address1 | port    | offset   |
+| res1     | res1_ce1      | port    |          |
+| res1     | res1_q1       | port    |          |
++----------+---------------+---------+----------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+

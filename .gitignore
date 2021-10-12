@@ -128,8 +128,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/*
-!src/
-!notebooks/
-!directives.tcl
-!matrixmul_Pipeline_Row_Col_Product_csynth.xml
