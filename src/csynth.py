@@ -1,11 +1,15 @@
 from typing import List
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
 
 
+@dataclass
 class CsynthModule:
-    def __init__(self, module_name: str, module_data: dict) -> None:
-        self.name = module_name
-        self.data = module_data
+    """
+    A dataclass to holds all information of a module present in the csynth file
+    """
+    name: str
+    data: dict
 
     @property
     def latency(self):
@@ -48,22 +52,29 @@ class CsynthModule:
 class Csynth:
     """
     For handling all reading operations concerning the csynth.xml file
-    
+    No write operations are supported (or required as each vitis_hls call will overwrite previous data)
     """
+    modules: List[CsynthModule]
+    root: ET.Element
+    top_name: str
+
     def __init__(self, file_name: str) -> None:
         self.csynth_file_name = file_name
-        self.modules: List[CsynthModule]
-        self.root: ET.Element
-        self.top_name: str
         self.configure()
-        self.update_modules()
+        _ = self.update_modules()
 
     def configure(self):
+        """
+        Loads/reloads the root and TopModule/ModuleName of the csynth file into instance variables.
+        """
         self.root = ET.parse(self.csynth_file_name).getroot()
         self.top_name = self.root.findtext(
             "./RTLDesignHierarchy/TopModule/ModuleName")
 
     def update_modules(self, update_root=True) -> List[CsynthModule]:
+        """
+        Finds all the available information for all modules present in the csynth file.
+        """
         if update_root:
             self.configure()
         modules = []
@@ -74,6 +85,9 @@ class Csynth:
         return modules
 
     def check_module_names(self) -> List[str]:
+        """
+        Find and return all available ModuleNames in the csynth report.
+        """
         module_list_element = self.root.find(
             "./RTLDesignHierarchy/TopModule/InstancesList")
         module_list = []
@@ -82,6 +96,9 @@ class Csynth:
         return module_list
 
     def get_module(self, module_name: str) -> CsynthModule:
+        """
+        Returns a CsynthModule instance for the corresponding module_name with all the available data
+        """
         module_info_element = self.root.find("./ModuleInformation")
         module_data = {}
         for module in module_info_element:
@@ -110,8 +127,7 @@ class Csynth:
                     module.findtext("./AreaEstimates/Resources/AVAIL_BRAM"))
                 module_data["avail_uram"] = int(
                     module.findtext("./AreaEstimates/Resources/AVAIL_URAM"))
-                return CsynthModule(module_name=module_name,
-                                    module_data=module_data)
+                return CsynthModule(name=module_name, data=module_data)
 
     @property
     def instances_in_modules(self):

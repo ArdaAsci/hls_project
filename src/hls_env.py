@@ -9,14 +9,17 @@ from directives import Directive
 
 
 class HlsEnv(gym.Env):
+    """
+    An rl environment that also handles the high level operation of the Csynth and Tcl modules
+    """
     def __init__(self, project_dir: str, project_name: str, solution_name: str,
                  top_name: str, initial_directive_file: str,
                  loop_list: List[Loop]) -> None:
         self.tcl = Tcl(initial_directive_file,
                        top_name=top_name,
                        read_only=True)
-        csynth_file = project_dir + project_name + "/" + solution_name + "/syn/report/csynth.xml"
-        self.csynth = Csynth(csynth_file)
+        csynth_file_path = project_dir + project_name + "/" + solution_name + "/syn/report/csynth.xml"
+        self.csynth = Csynth(csynth_file_path)
 
         self.action_space = spaces.MultiDiscrete([
             3 for i in range(len(loop_list))
