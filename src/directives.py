@@ -15,7 +15,6 @@ class Directive(ABC):
         r"""
         Get the .tcl file representation of a directive as an str
         """
-        pass
 
 
 @dataclass
@@ -39,6 +38,7 @@ class LoopDirective(Directive, ABC):
     loop_name: str
     param: int
 
+
 @dataclass
 class PipelineDirective(LoopDirective):
     others: List[str]
@@ -59,7 +59,7 @@ class UnrollDirective(LoopDirective):
 
     def __init__(self, loop_name: str, factor: int, others: str = ""):
         assert factor >= 0, f"Unrolling factor ({factor}) must be >=0"
-        super().__init__(loop_name=loop_name, param=factor )
+        super().__init__(loop_name=loop_name, param=factor)
         self.others = others
 
     def print(self) -> str:

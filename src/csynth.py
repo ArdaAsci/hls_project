@@ -97,7 +97,7 @@ class Csynth:
 
     def get_module(self, module_name: str) -> CsynthModule:
         """
-        Returns a CsynthModule instance for the corresponding module_name with all the available data
+        Returns a CsynthModule instance for the corresponding module_name with all the available data.
         """
         module_info_element = self.root.find("./ModuleInformation")
         module_data = {}

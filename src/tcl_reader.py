@@ -32,6 +32,12 @@ class Tcl():
 
     def set_loop_parameter(self, loop_name: str, directive_type: str,
                            val: int):
+        """
+        Iterates through all the tracked directives to find the matching loop name
+        If a loop_name match is found, sets the value of the directives param to val.
+
+        TODO: Refactoring required - quite sloppy 
+        """
         directive_class = LoopDirective
         if directive_type == "unroll":
             directive_class = UnrollDirective
@@ -78,6 +84,9 @@ class Tcl():
 
     @property
     def loop_count(self):
+        """
+        Iterates through all the directives to find all the unique loop names and returns the # of them.
+        """
         loopnames = []
         for directive in self.directives:
             if isinstance(directive, LoopDirective):
@@ -92,18 +101,21 @@ class Tcl():
         return str(self.directives)
 
     def file_str(self) -> str:
+        """
+        Create a .tcl formatted directives list as a string.
+        """
         file_str = ""
         for directive in self.directives:
             file_str += directive.print() + "\n"
         return file_str
 
-    def write_to_file(self, append=False):
+    def update_directives(self):
+        """
+        Flush the old directives and write the new ones with the updated parameters
+        """
         text = self.file_str()
         if not self.dirfile.writable:
             return False
-        if append:
-            self.dirfile.write(text)
-        else:
-            open(self.dirfile_name, "w").close()  # Flush the file
-            self.dirfile.write(text)
+        open(self.dirfile_name, "w").close()  # Flush the file
+        self.dirfile.write(text)
         return True
