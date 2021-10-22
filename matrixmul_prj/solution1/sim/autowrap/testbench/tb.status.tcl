@@ -1,1 +1,0 @@
-set ::AESL_AUTOSIM::gTopFileName /home/asci/vivado/vitis_rl/matrixmul_prj/solution1/./sim/autowrap/testbench/matrixmul.cpp_pre.cpp.tb.cpp
