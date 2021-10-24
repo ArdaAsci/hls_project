@@ -10,6 +10,7 @@ class Directive(ABC):
     These classes are used for categorizing and tracking different
     directives in the "directives.tcl" file
     """
+
     @abstractmethod
     def print(self) -> str:
         r"""
@@ -44,13 +45,19 @@ class PipelineDirective(LoopDirective):
     others: List[str]
 
     def __init__(self, loop_name: str, ii: int, others: str = ""):
-        assert ii >= 1, f"Pipeline ii ({ii}) must be >=1"
+        assert ii >= 1, f"Pipeline II ({ii}) must be >=1"
         super().__init__(loop_name=loop_name, param=ii)
         self.others = others
 
     def print(self) -> str:
-        return "set_directive_pipeline -ii " + str(
-            self.param) + " " + self.loop_name + " " + " ".join(self.others)
+        return (
+            "set_directive_pipeline -II "
+            + str(self.param)
+            + " "
+            + self.loop_name
+            + " "
+            + " ".join(self.others)
+        )
 
 
 @dataclass
@@ -63,5 +70,11 @@ class UnrollDirective(LoopDirective):
         self.others = others
 
     def print(self) -> str:
-        return "set_directive_unroll -factor " + str(
-            self.param) + " " + self.loop_name + " " + " ".join(self.others)
+        return (
+            "set_directive_unroll -factor "
+            + str(self.param)
+            + " "
+            + self.loop_name
+            + " "
+            + " ".join(self.others)
+        )
