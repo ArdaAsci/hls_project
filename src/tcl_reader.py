@@ -1,13 +1,21 @@
 from typing import List, Type, Union
-from directives import BasicDirective, Directive, LoopDirective, PipelineDirective, UnrollDirective
+from src.directives import (
+    BasicDirective,
+    Directive,
+    LoopDirective,
+    PipelineDirective,
+    UnrollDirective,
+)
 
 
-class Tcl():
-    def __init__(self,
-                 initial_directives: str,
-                 top_name: str,
-                 read_only=False,
-                 dirfile_name="./new_directives.tcl") -> None:
+class Tcl:
+    def __init__(
+        self,
+        initial_directives: str,
+        top_name: str,
+        read_only=True,
+        dirfile_name="./new_directives.tcl",
+    ) -> None:
         """
         A class that handles all operations with the .tcl file provided
         
@@ -30,14 +38,26 @@ class Tcl():
             self.dirfile = initial_dirfile
             self.dirfile_name = initial_directives
 
-    def set_loop_parameter(self, loop_name: str, directive_type: str,
-                           val: int):
+    def get_loop_parameter(self, loop_name: str, directive_type: str):
+        directive = self.__find_directive(loop_name, directive_type)
+        if directive is not None:  # found the directive we're looking for
+            return directive.param
+        return None
+
+    def set_loop_parameter(self, loop_name: str, directive_type: str, val: int):
         """
         Iterates through all the tracked directives to find the matching loop name
         If a loop_name match is found, sets the value of the directives param to val.
 
         TODO: Refactoring required - quite sloppy 
         """
+        directive = self.__find_directive(loop_name, directive_type)
+        if directive is not None:  # found the directive we're looking for
+            directive.param = val
+            return True
+        return False
+
+    def __find_directive(self, loop_name: str, directive_type: str):
         directive_class = LoopDirective
         if directive_type == "unroll":
             directive_class = UnrollDirective
@@ -48,9 +68,8 @@ class Tcl():
                 continue
             if directive.loop_name != '"' + self.top_name + "/" + loop_name + '"':
                 continue
-            # found the directive we're looking for
-            directive.param = val
-            return
+            return directive
+        return None  # loop_name - directive combo not found
 
     def add_directive(self, lines: Union[str, List[str]]):
         if lines is not list:
@@ -65,19 +84,19 @@ class Tcl():
                 ii_val_idx = int(rest.index("-II")) + 1
                 ii_val = int(rest[ii_val_idx])
                 loop_name = rest[ii_val_idx + 1]
-                others = rest[ii_val_idx + 2:]
-                new_direc = PipelineDirective(loop_name=loop_name,
-                                              ii=ii_val,
-                                              others=others)
+                others = rest[ii_val_idx + 2 :]
+                new_direc = PipelineDirective(
+                    loop_name=loop_name, ii=ii_val, others=others
+                )
 
             elif first == "set_directive_unroll":
                 factor_val_idx = int(rest.index("-factor")) + 1
                 factor_val = int(rest[factor_val_idx])
                 loop_name = rest[factor_val_idx + 1]
-                others = rest[factor_val_idx + 2:]
-                new_direc = UnrollDirective(loop_name=loop_name,
-                                            factor=factor_val,
-                                            others=others)
+                others = rest[factor_val_idx + 2 :]
+                new_direc = UnrollDirective(
+                    loop_name=loop_name, factor=factor_val, others=others
+                )
             else:
                 new_direc = BasicDirective(line=line)
             self.directives.append(new_direc)
