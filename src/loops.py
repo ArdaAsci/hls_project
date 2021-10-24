@@ -2,8 +2,12 @@ from typing import Any, List
 
 
 class Loop:
+    """
+    A Class structure to represent a Loop in the C code.
+    If nested, it has a reference to its parent loop a list of child loops.
+    """
 
-    def __init__(self, name, iteration_count: int = 5, parent_loop = None) -> None:
+    def __init__(self, name, iteration_count: int = 5, parent_loop=None) -> None:
         self.name = name
         self.iteration_count = iteration_count
         self.parent_loop: Loop = parent_loop
@@ -14,6 +18,15 @@ class Loop:
 
     def set_parent(self, parent):
         self.parent_loop = parent
+
+    def remove_all_children(self):
+        self.child_loops: List[Loop] = []
+
+    def remove_child(self, child_name: str):
+        if child_name in self.child_loops:
+            self.child_loops.remove(child_name)
+            return True
+        return False
 
     @property
     def rank(self):
