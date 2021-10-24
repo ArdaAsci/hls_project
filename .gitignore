@@ -127,7 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-/matrixmul_prj/solution1/*
-
+/matrixmul_prj/*
+/matrixmul_prj/**
 !matrixmul_prj/solution1/syn/report/*
