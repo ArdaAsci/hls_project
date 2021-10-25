@@ -39,6 +39,10 @@ class Tcl:
             self.dirfile_name = initial_directives
 
     def get_loop_parameter(self, loop_name: str, directive_type: str):
+        """
+        Iterates through all the tracked directives to find the matching loop name
+        If a loop_name match is found, returns the value of the directive's param.
+        """
         directive = self.__find_directive(loop_name, directive_type)
         if directive is not None:  # found the directive we're looking for
             return directive.param
@@ -47,7 +51,7 @@ class Tcl:
     def set_loop_parameter(self, loop_name: str, directive_type: str, val: int):
         """
         Iterates through all the tracked directives to find the matching loop name
-        If a loop_name match is found, sets the value of the directives param to val.
+        If a loop_name match is found, sets the value of the directive's param to val.
 
         TODO: Refactoring required - quite sloppy 
         """
@@ -56,6 +60,15 @@ class Tcl:
             directive.param = val
             return True
         return False
+
+    def increment_loop_parameter(
+        self, loop_name: str, directive_type: str, increment_by: int
+    ):
+        """
+        For adding to the current value of the 
+        """
+        directive = self.__find_directive(loop_name, directive_type)
+        directive.param += increment_by
 
     def __find_directive(self, loop_name: str, directive_type: str):
         directive_class = LoopDirective
@@ -116,6 +129,8 @@ class Tcl:
     def loop_names(self) -> List[str]:
         pass
 
+
+
     def __str__(self) -> str:
         return str(self.directives)
 
@@ -128,9 +143,10 @@ class Tcl:
             file_str += directive.print() + "\n"
         return file_str
 
-    def update_directives(self):
+    def update_directives_file(self):
         """
-        Flush the old directives and write the new ones with the updated parameters
+        Flush the old directives and write the new ones with the updated parameters.
+        Must be done before any hls cli call.
         """
         text = self.file_str()
         if not self.dirfile.writable:
@@ -138,3 +154,7 @@ class Tcl:
         open(self.dirfile_name, "w").close()  # Flush the file
         self.dirfile.write(text)
         return True
+
+    @property
+    def current_directives_file(self):
+        return self.dirfile_name
