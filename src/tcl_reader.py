@@ -1,4 +1,7 @@
-from typing import List, Type, Union
+from typing import List, Union
+
+import numpy as np
+
 from src.directives import (
     BasicDirective,
     Directive,
@@ -8,6 +11,7 @@ from src.directives import (
 )
 
 
+######################################
 class Tcl:
     def __init__(
         self,
@@ -29,7 +33,7 @@ class Tcl:
         self.top_name = top_name
         initial_dirfile = open(initial_directives)
         for directive_line in initial_dirfile:
-            self.add_directive(directive_line)
+            self.add_directive_from_file(directive_line)
         if read_only:
             initial_dirfile.close()
             self.dirfile = open(dirfile_name, "w")
@@ -37,6 +41,23 @@ class Tcl:
         else:
             self.dirfile = initial_dirfile
             self.dirfile_name = initial_directives
+
+    def initialize_loop_directives(self, loop_name):
+        self.add_directive_from_file()
+
+    def get_loop_pragma(self, loop_name: str):
+        """
+        Returns both the pragmas of a loop.
+        """
+        return np.array(
+            [
+                self.get_loop_parameter(loop_name, "unroll"),
+                self.get_loop_parameter(loop_name, "pipeline"),
+            ]
+        )
+
+    def set_loop_pragma(self, loop_name: str, pragma: np.ndarray):
+        directive = self.__find_directive(loop_name)
 
     def get_loop_parameter(self, loop_name: str, directive_type: str):
         """
@@ -70,7 +91,19 @@ class Tcl:
         directive = self.__find_directive(loop_name, directive_type)
         directive.param += increment_by
 
+    def __find_directives(self, loop_name: str, create=True):
+        """
+        Finds both directives with the specified loop name.
+        """
+        unroll_directive = self.__find_directive(loop_name, "unroll")
+        pipeline_directive = self.__find_directive(loop_name, "pipeline")
+        return (unroll_directive, pipeline_directive)
+
     def __find_directive(self, loop_name: str, directive_type: str):
+        """
+        Finds the directive with the specified loop name and directive
+        Returns None if not found
+        """
         directive_class = LoopDirective
         if directive_type == "unroll":
             directive_class = UnrollDirective
@@ -84,7 +117,7 @@ class Tcl:
             return directive
         return None  # loop_name - directive combo not found
 
-    def add_directive(self, lines: Union[str, List[str]]):
+    def add_directive_from_file(self, lines: Union[str, List[str]]):
         if lines is not list:
             lines = [lines]  # Convert "line" to a list if not already one
         for line in lines:
@@ -124,12 +157,6 @@ class Tcl:
             if isinstance(directive, LoopDirective):
                 loopnames.append(directive.loop_name)
         return len(set(loopnames))
-
-    @property
-    def loop_names(self) -> List[str]:
-        pass
-
-
 
     def __str__(self) -> str:
         return str(self.directives)
