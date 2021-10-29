@@ -7,11 +7,11 @@ from src.tcl_reader import Tcl
 row = Loop(name="Row", iteration_count=7, parent_loop=None, rank=0)
 col = Loop(name="Col", iteration_count=7, parent_loop=row)
 product = Loop(name="Product", iteration_count=7, parent_loop=col)
-row.add_child(col)
-col.add_child(product)
+# row.add_child(col)
+# col.add_child(product)
 row1 = Loop(name="Row1", iteration_count=7, parent_loop=None, rank=1)
 col1 = Loop(name="Col1", iteration_count=7, parent_loop=row1)
-row1.add_child(col1)
+# row1.add_child(col1)
 matrixmul_project_loops = [row, col, product, row1, col1]
 """
 tcl_tester = Tcl("./directives.tcl", "matrixmul", read_only=True)

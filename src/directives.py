@@ -53,9 +53,9 @@ class PipelineDirective(LoopDirective):
         return (
             "set_directive_pipeline -II "
             + str(self.param)
-            + " "
+            + ' "'
             + self.loop_name
-            + " "
+            + '" '
             + " ".join(self.others)
         )
 
@@ -73,8 +73,8 @@ class UnrollDirective(LoopDirective):
         return (
             "set_directive_unroll -factor "
             + str(self.param)
-            + " "
+            + ' "'
             + self.loop_name
-            + " "
+            + '" '
             + " ".join(self.others)
         )
